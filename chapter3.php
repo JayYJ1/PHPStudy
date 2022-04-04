@@ -1,166 +1,195 @@
 <?php
-    echo" <h1>시험 점수 구하기</h1>";
-
-    $score = 95;
+    echo"<html>
+    <head>
+        <h2>점수 입력받아 등급 판별</h2>
+    </head>
+        <body>
+            <form method='GET' action='chapter3.php'>
+            점수: <input type='text' name='score'/>
+                <input type='submit' name='submit'/>
+                <input type='reset'/>
+            </form>
+        </body>
+    </html>";
+   $score=$_GET["score"];
     if ($score>100||$score<0)
-        echo "입력 점수 오류!";
+        echo '입력 점수 오류!';
     elseif($score>=90){
-        echo"시험점수 :  $score<br>";
-        echo"등급 : 수<br>";
+        echo'시험점수 :  $score<br>';
+        echo'등급 : 수<br>';
     }
     elseif($score>=80){
-        echo"시험점수 :  $score<br>";
-        echo"등급 : 우<br>";
+        echo'시험점수 :  $score<br>';
+        echo'등급 : 우<br>';
     }
     elseif($score>=70){
-        echo"시험점수 :  $score<br>";
-        echo"등급 : 미<br>";
+        echo'시험점수 :  $score<br>';
+        echo'등급 : 미<br>';
     }
     elseif($score>=60){
-        echo"시험점수 :  $score<br>";
-        echo"등급 : 양<br>";
+        echo'시험점수 :  $score<br>';
+        echo'등급 : 양<br>';
     }
-    elseif($score<60){
-        echo"시험점수 :  $score<br>";
-        echo"등급 : 가<br>";
+    else{
+        echo'시험점수 :  $score<br>';
+        echo'등급 : 가<br>';
     }
 ?>
-<!--1-->
+<!--1번-->
 
 <?php 
- echo" <h1>100~200 while</h1>";
-    $n=100;
-    while($n<=200)
-    {
-        if($n%2==1)
-        echo "$n ";
-        $n++;
+    echo"<h2>100~200 while문 이용하여 홀수 출력</h2>";
+    $num=100;
+    $count=0;
+    while($num<=200){ //num을 200까지 반복
+        if($num%2==1){ //num을 2로 나눈 나머지가 1일때 실행
+            echo"$num ";
+            $count++; //count는 조건문이 참일때 수를 증가
+        }
+        if($count%10==0){//count를 10으로 나눈 나머지가 0일때 실행
+             echo"<br>";  
+        }
+        $num++; //num의 범위는 100~200이므로 if문 바깥에서 증가
     }
 ?>
-<!--2-->
-<?php 
- echo" <h1>100~200 for</h1>";
-     for($n=100; $n<=200; $n++)
-     {
-         if($n%2==1)
-         echo "$n ";
-        
-     }
-?>
-<!--3-->
-<?php 
-     echo" <h1>1~100 3의 배수 10개씩 출력</h1>";
-     $n=1; //정수
-     $count=0; //10개 씩 세어줄 수
-     while($n<=100) // n이 1~100까지 반복
-     {
-         if($n%3==0){ //n이 3으로 나눈 나머지가 0일때
-         echo "$n "; //n을 출력
-         $count++; //3의 배수 1개당 count 1씩 증가
-         if($count%10==0) //count가 10으로 나눈 나머지가 0일때, 즉 10의 배수일때
-         echo"<br>"; //줄바꿈
-         }       
-         $n++;//n은 1~100까지 세어야 하므로 계속 증가
-     }
-?>
-<!--4-->
-<?php 
-      echo" <h1>300~350 5의 배수가 아닌 수를 10개씩 출력</h1>";
-      $n=300; //정수
-      $count=0; //10개 씩 세어줄 수
-      while($n<=350) // n이 300~350까지 반복
-      {
-          if($n%5!=0){ //n이 5으로 나눈 나머지가 0이 아닐때
-          echo "$n "; //n을 출력
-          $count++; //5의 배수가 아닌수 1개당 count 1씩 증가
-          if($count%10==0) //count가 10으로 나눈 나머지가 0일때, 즉 10의 배수일때
-          echo"<br>"; //줄바꿈
-          }       
-          $n++;//n은 1~100까지 세어야 하므로 계속 증가
-      }
-?>
-<!--5-->
-<?php 
-    echo" <h1>10~20의 길이를 인치, 센티미터 환산 while 출력</h1>";
-        echo "-------------------------------<br>";
-        echo "인치 센티미터<br>";
-        echo "-------------------------------<br>";
-    
-        $inch = 10;
-        while ($inch<=20) {
-            $cm = $inch * 2.54;
-            echo $inch." &nbsp; ".$cm."<br>";
-    
-            $inch += 2;
-        }
-        echo "--------------------------------";    
-    
-?>
-<!--6-->
-<?php 
-echo" <h1>10~20의 길이를 인치, 센티미터 환산 for 출력</h1>";
-        echo "-------------------------------<br>";
-        echo "인치 센티미터<br>";
-        echo "-------------------------------<br>";
-    
-        for ($inch=10; $inch<=20; $inch+=2) {
-            $cm = $inch * 2.54;
-            echo $inch." &nbsp; ".$cm."<br>";
-        }
-        echo "--------------------------------";    
-    
-?>
-<!--7-->
-<?php 
-    echo" <h1>10~20달러 2증가씩 원화,유로 환산표 출력</h1>";
-        echo "-------------------------------<br>";
-        echo "달러  원화  유로<br>";
-        echo "-------------------------------<br>";
-    
-        for($won=10; $won<=20; $won+= 2) {
-            $dollar = $won * 1180.60;
-            $euro = $won * 1350.30;
-            echo $won." &nbsp; ".$dollar." &nbsp; ".$euro."<br>";
-        }
-        echo "--------------------------------";    
-    
-?>
-<!--8-->
-<?php 
-  echo" <h1>10~20달러 2증가씩 원화,유로 환산표-테이블 출력</h1>";
-        $string = "";
-        $string .= "<table border='1'>";
-        $string .= "<tr><th width='100'>달러</th><th width='100'>원화</th><th width='100'>유로</th></tr>";
-    
-        for($won=10; $won<=20; $won+= 2) {
-            $dollar = $won * 1180.60;
-            $euro = $won * 1350.30;
-            $string .= "<tr><td>$won</td><td>$dollar</td><td>$euro</td>";
-        }
-        $string .= "</table>";
-        
-        echo $string;
-    
-?>
-<!--9-->
-<?php 
-  echo" <h1>사각형 별 출력</h1>";
-        for ($a=1; $a<=5; $a++) {
-            for ($b=1; $b<=10; $b++) {
-                echo "* ";
-            }
-            echo "<br>";
-        }
-    
-?>
-<!--10-->
+<!--2번-->
+
 <?php
-echo" <h1>직각삼각형 별 출력</h1>";
-    for ($a=1; $a<=10; $a++) {
-        for ($b=1; $b<=$a; $b++) {
-            echo "* ";
+    echo"<h2>100~200 for문 이용하여 홀수 출력</h2>";
+    $count=0;
+    for($num=100; $num<=200; $num++){ //num을 200까지 반복
+        if($num%2==1){ //num을 2로 나눈 나머지가 1일때 실행
+            echo"$num ";
+            $count++; //count는 조건문이 참일때 수를 증가
         }
-        echo "<br>";
+        if($count%10==0){//count를 10으로 나눈 나머지가 0일때 실행
+             echo"<br>";  
+        }
+    }//for문을 쓸 경우 loop문안에 변수 선언 및 증감식 가능
+?>
+<!--3번-->
+
+<?php
+    echo"<h2>1~100 for문 이용하여 3의배수 출력</h2>";
+    $num=1;
+    $count=0;
+    while($num<=100){ //num을 100까지 반복
+        if($num%3==0){ //num을 3로 나눈 나머지가 0일때 실행
+            echo"$num ";
+            $count++; //count는 조건문이 참일때 수를 증가
+        if($count%10==0)//count를 10으로 나눈 나머지가 0일때 실행
+             echo"<br>";  
+        }
+        $num++; //num의 범위는 100~200이므로 if문 바깥에서 증가
     }
 ?>
-<!--11-->
+<!--4번-->
+
+<?php
+    echo"<h2>300~350 5의 배수 아닌 수 1줄에 10개씩 출력</h2>";
+    $num=300;
+    $count=0;
+    while($num<=350){ //num을 100까지 반복
+        if($num%5!=0){ //num을 3로 나눈 나머지가 0일때 실행
+            echo"$num ";
+            $count++; //count는 조건문이 참일때 수를 증가
+        if($count%10==0)//count를 10으로 나눈 나머지가 0일때 실행
+             echo"<br>";  
+        }
+        $num++; //num의 범위는 100~200이므로 if문 바깥에서 증가
+    }
+?>
+<!--5번-->
+
+<?php
+echo"<h2>10~20, 2씩 증가하는 inch, centimeter표 while문 </h2>";
+    $inch=10;
+echo"----------------<br>";
+echo"&nbsp;인치&nbsp;센티미터<br>";
+echo"----------------<br>";
+    while($inch<=20){
+        echo"&nbsp;&nbsp;$inch | ";
+        $centi=$inch * 2.54;
+        echo"&nbsp;$centi<br>";
+        $inch+=2;
+    }
+    echo"----------------<br>";
+?>
+<!--6번-->
+
+<?php
+echo"<h2>10~20, 2씩 증가하는 inch, centimeter표 for문 </h2>";
+echo"----------------<br>";
+echo"&nbsp;인치&nbsp;센티미터<br>";
+echo"----------------<br>";
+    for($inch=10;$inch<=20;$inch+=2){
+        echo"&nbsp;&nbsp;$inch | ";
+        $centi=$inch * 2.54;
+        echo"&nbsp;$centi<br>";
+    }
+    echo"----------------<br>";
+?>
+<!--7번-->
+
+<?php
+    echo"<h2>10~20달라, 2씩 증가하는 달러, 원화 유로 환율표 for문 </h2>";
+    echo"----------------------------<br>";
+    echo"달라&nbsp;원화&nbsp;유로<br>";
+    echo"----------------------------<br>";
+        for($d=10;$d<=20;$d+=2){
+            echo"&nbsp;&nbsp;$d ";
+            $w=$d * 1180.60;
+            echo"&nbsp;$w ";
+            $u=$d * 1350.30;
+            echo"&nbsp;$u<br>";
+        }
+        echo"----------------------------<br>";
+?>
+<!--8번-->
+
+<?php
+    echo"<h2>10~20달라, 2씩 증가하는 달러, 원화 유로 환율표 for문, table태그 </h2>";   
+    echo"<table border='1' >
+        <tr>
+            <td width='100' align='center'>달러</td>
+            <td width='100' align='center'>원화</td>
+            <td width='100' align='center'>유로</td>
+        </tr>";
+    for($d=10;$d<=20;$d+=2){
+        $w=$d * 1180.60;
+        $u=$d * 1350.30;
+        echo"<tr>
+        <td align='center'>$d</td>
+        <td align='center'>$w</td>
+        <td align='center'>$u</td>
+        </tr>";
+    }  
+    echo"</table>";
+?>
+<!--9번-->
+
+<?php
+    echo"<h1>사각형 별찍기</h1>";
+    for($i=0; $i<5; $i++){
+           for($j=0;$j<10; $j++){
+            echo"★";
+        }
+        echo"<br>";
+       }
+?>
+<!--10번-->
+
+<?php
+    echo"<h1>삼각형 별찍기</h1>";
+    for($i=0; $i<10; $i++){
+        for($j=0;$j<=$i; $j++){
+         echo"★";
+     }
+     echo"<br>";
+    }
+    //i=0이고 j=0일때 별, j=1일때 개행
+    //i=1이고 j=0,1일때 별 j =2일때 개행
+    // ...
+    //i=5이고 j=0,1,2,3,4,5 일때 별, j= 6일때 개행
+?>
+<!--11번-->
