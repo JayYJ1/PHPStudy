@@ -1,4 +1,5 @@
 <?php
+error_reporting(0); //한시적으로 error메시지 모두 무시 
     echo"<html>
     <head>
         <h2>점수 입력받아 등급 판별</h2>
