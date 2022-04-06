@@ -64,3 +64,37 @@ $number2=(int)$_POST['number2'];
     echo $number1 . "부터" . $number2 . "까지의 합 : " . number_format($result);
 ?>
 <!-- 2번 -->
+<?php
+echo"<html>
+ <head>
+     <h2>N1~N2 정수 중 N의 배수 합계</h2>
+ </head>
+     <body>
+         <form method='POST' action='chapter4.php'>
+         첫수: <input type='number' name='number3' />
+         끝수: <input type='number' name='number4' />
+         배수: <input type='number' name='number5' />
+         <input type='submit' name='submit'/>
+         </form>
+     </body>
+ </html>";
+ 
+ $num3=(int)$_POST['number3']; 
+ $num4=(int)$_POST['number4'];
+ $num5=(int)$_POST['number5'];
+ 
+     function Baesu($num3, $num4, $num5){
+         $rs1=0;
+         if($num3>0 || $num4>0 || $num5>0){ //Division by zero error while using modulus
+         for($num3; $num3<=$num4; $num3++){
+             if($num3 % $num5==0){
+                $rs1+=$num3;
+             }
+         }
+         return $rs1;
+     }
+    }
+     $result1=Baesu($num3,$num4,$num5);
+   //  var_dump($result1);
+echo $num3."~".$num4."정수 중".$num5."의 배수 합계 : ".$result1;
+?>
