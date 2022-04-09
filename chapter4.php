@@ -47,7 +47,7 @@ $hgt=(int)$_POST['height'];
 </html>";
 //var_dump($_POST['number1']);
 //echo"<br>";
-$number1=$_POST['number1'];
+$number1=(int)$_POST['number1'];
 //var_dump($number1);
 //echo"<br>";
 $number2=(int)$_POST['number2'];
@@ -98,6 +98,52 @@ echo"<html>
    //  var_dump($result1);
 echo $num3."~".$num4."정수 중".$num5."의 배수 합계 : ".$result1;
 ?>
+<!--3번-->
+<?php
+        echo"<html>
+        <head>
+            <h2>나이와 시간에 따라 영화관 입장료 구하기</h2>
+        </head>
+            <body>
+                <form method='POST' action='chapter4.php'>
+                시간:  <select name='time'>
+                <option value='조조'>조조</option>
+                <option value='일반'>일반</option>
+              </select>
+              나이: <input type='number' name='age' value='0' />
+                <input type='submit' name='submit'/>
+                </form>
+            </body>
+        </html>";
+		  $time=$_POST['time'];
+     $age=(int)$_POST['age'];
+    function paytable($time, $age){
+        $fee=0;
+        if($time=="조조"){
+            if($age<=18 || $age>=65){
+                $fee = 7000;
+            }
+            else{
+                $fee = 9000;
+            }
+        }
+        elseif($time=="일반"){
+            if($age<=18){
+                $fee = 10000;
+            }
+            elseif($age>=65){
+                $fee = 7000;
+            }
+            else{
+                $fee = 13000;
+            }
+        }
+        return $fee;
+    }
+    $result=paytable($time,$age);
+    echo "구분 : " . $time ."<br>" ."나이 : " . $age ."세"."<br>" ."요금 : ". number_format($result) ."원";
+?>
+<!--4번-->
 <?php
         echo"<html>
         <head>
@@ -121,7 +167,7 @@ echo $num3."~".$num4."정수 중".$num5."의 배수 합계 : ".$result1;
 
      $time=$_POST['time'];
      $pg=$_POST['pg'];
-     $age=$_POST['age'];
+     $age=(int)$_POST['age'];
     function paytable1($time, $age, $pg){
         $fee=0;
         if($time=="일반"){//일반 손님
@@ -179,6 +225,7 @@ echo $num3."~".$num4."정수 중".$num5."의 배수 합계 : ".$result1;
     $result=paytable1($time,$age,$pg);
     echo "구분 : " . $time ."<br>"."개인/단체: ".$pg. "<br>" ."나이 : " . $age ."세"."<br>" ."요금 : ". number_format($result) ."원<br>";
 ?>
+<!--5번-->
 <?php
     echo"<h2>1차원 배열 출력</h2>";
     $bae = array(1,1,2,3,5,8,13,21,34,55,89);
@@ -187,3 +234,74 @@ echo $num3."~".$num4."정수 중".$num5."의 배수 합계 : ".$result1;
         echo $i+1,"번 = ".$bae[$i]."<br>";
     }
 ?>
+<!--6번-->
+<?php
+    echo"<h2>2차원 배열 출력</h2>";
+    $bae1 = array(
+        array(1,1,2,3,5,8,13,21,34,55,89,144),
+        array(1,3,5,7,9,11,13,15,17,19,21,23),
+        array(2,4,6,8,10,12,14,16,18,20,22,24));
+    for($i=0; $i<count($bae1); $i++){
+        for($j=0; $j<count($bae1[$i]); $j++){
+            echo"[$i][$j]"."번= ".$bae1[$i][$j]."<br>";
+        }
+        echo"<br>";
+     }
+?>
+<!--7번-->
+<?php
+echo"<h2>난수 배열 </h2>";
+//1부터 100개의 숫자를 생성
+for($i=0;$i<30;$i++){
+    $n = mt_rand(0,100);
+    $score[$i]=$n;
+}
+$su = 0;           // 90점 ~ 100점
+$wu = 0;           // 80점 ~ 89점
+$mi = 0;            // 70점 ~ 79점
+$yang = 0;          // 60점 ~ 69점
+$ga = 0;            // 0점  ~ 59점
+    
+for ($i=0; $i<count($score); $i++) {
+    if ($score[$i] >= 90)
+        $su += 1;
+    elseif ($score[$i] >= 80)
+        $wu += 1;
+    elseif ($score[$i] >= 70)
+        $mi += 1;
+    elseif ($score[$i] >= 60)
+        $yang += 1; 
+    else
+        $ga += 1;
+}
+
+echo "수 : ".$su."명<br>";
+echo "우 : ".$wu."명<br>";
+echo "미 : ".$mi."명<br>";
+echo "양 : ".$yang."명<br>";
+echo "가 : ".$ga."명<br>";
+
+//print_r($score);
+?>
+<!--8번-->
+<?php
+echo"<h2>0,1로 좌석 예약 여부 확인</h2>";
+$seat = array(array(0,0,1,0,1,0,0,1,0,0),
+              array(0,0,1,0,1,0,1,1,0,0),
+              array(0,0,1,1,0,0,0,0,1,0),
+              array(0,1,0,0,1,0,1,0,0,1),
+              array(0,1,1,0,1,0,1,0,1,1));
+             // echo count($seat[0]);
+        for($i=0;$i<count($seat);$i++){ //베열 행의 개수 = 10
+            for($j=0;$j<count($seat[$i]);$j++){//열, 10회 반복
+            if($seat[$i][$j]==1){//행열의 값 1의 여부를 판단
+                echo"■";
+            }
+            else
+                echo"□";
+        }
+        echo"<br>";
+    }
+   echo "□ : 예약가능, ■ : 예약 불가능";
+?>
+<!--9번-->
