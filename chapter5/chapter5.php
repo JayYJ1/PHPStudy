@@ -102,3 +102,75 @@
     echo "배열 요소의 합계 : ".$sum."<br>";
     echo "배열 요소의 평균 : ".number_format($avg,2)."<br>";
 ?>
+<?php
+    echo"<h2>날짜 관련 함수</h2>";
+    $today1= date("Y년 m월 d일 A H시"); //GMT시간을 각 기호에 맞춰 반환
+    echo $today1."<br>"; // A=AM,PM H=24,h=12기준
+    $today2= date("Y년 m월 d일 a h시 i분 s초");
+    echo $today2."<br>";
+    echo time()."<br>"; //1970/01/01을 현재 시간까지 초로 환산
+    $a = time();
+    echo "현재 시간=>".date("Y년 m월 d일 a h시 i분 s초",$a)."<br>";
+    $b = 3*24*60*60;
+    echo "3일 후 타임스태프=>".date($a+$b)."<br>";
+    echo "3일 후 시간=>".date("Y년 m월 d일 a h시 i분 s초",$a+$b)."<br>";
+    echo "3일 전 타임스태프=>".date($a-$b)."<br>";
+    echo "3일 전 시간=>".date("Y년 m월 d일 a h시 i분 s초",$a-$b)."<br>";
+?>
+<?php
+    echo"<h2>파일 관련 함수1</h2>";
+    $file = fopen("hello.txt","r"); //fopen() 파일을 읽거나 쓰기 위해 쓴다. 
+                                    //fopen("filename","mode") mode r=읽기, w=쓰기(파일이 없으면 추가, 있으면 덮어쓰기), a=추가
+       while(!feof($file)){ //feof()파일의 끝에 도달 하였는지 체크할때 쓴다. 여기서는 파일에 끝에 도달하지 않았을때 반복.
+           echo fgets($file)."<br>"; // fgets()는 파일을 1줄씩 데이터를 읽는다.
+       }
+       fclose($file); //파일을 닫는다.
+    
+?>
+<?php
+    echo"<h2>파일 관련 함수2</h2>";
+    $file=fopen("data.csv","r"); //data.csv 파일을 읽기모드로 실행
+    $header=fgetcsv($file); //csv파일을 1줄씩 배열로 읽어온다. 여기서는 15개가 되겠다.
+    //$a=count($header, COUNT_RECURSIVE);
+    //var_dump($a);
+    $num=count($header); //배열로 저장한 내용의 요소를 숫자로 센다 여기서는 15개가 되겠다.
+    echo"<h4>5명의 3과목 합, 평균</h4>";
+
+    while(!feof($file)){ //data.csv파일의 끝에 도달할때 까지 반복
+        $sum=0; //합계 구하기
+        $row=fgetcsv($file); //$row에 한 줄의 성적 데이터를 읽어 저장한다.
+        foreach($row as $v){ //합계를 위해 반복
+            $sum += $v;
+        }
+        $avg = round($sum/3,3);//소수점 셋째 자리까지 반올림
+        echo "합계: ". "$sum"." "."평균: ".$avg."<br>";
+    }
+    fclose($file);
+?>
+<?php
+    echo"<h2>파일 관련 함수3</h2>";
+
+    $file = fopen("hello2.txt","w"); //fopen("filename","mode") mode r=읽기, w=쓰기(파일이 없으면 추가, 있으면 덮어쓰기), a=추가
+    $add = "여기까지 고생이 많았네!";
+    fwrite($file,$add);//hello2.txt에 $add를 저장한다.
+    echo"쓰기완료";
+    fclose($file);
+?>
+<?php
+    echo"<h2>파일 내용에 일련 번호 추가하여 새 파일로 저장</h2>";
+    $file1 = fopen("test1.txt","r");
+    $file2 = fopen("test2.txt","w");
+
+    $str = "";
+    $number = 1;
+    while(! feof($file1)) {
+      $a= $str .= $number." : ".fgets($file1);
+        $number++;
+    }
+    echo $a;
+    fwrite($file2, $str);
+    echo "<br>파일 쓰기 완료!";
+
+    fclose($file1);
+    fclose($file2);
+?>
