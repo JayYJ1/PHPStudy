@@ -19,4 +19,8 @@
     $cyl = new Cylinder(4,8);//new 연산자를 이용해 인스턴스를 초기화할때 사용될 인자를 함께 명시함
     //4 8은 각각 r,h
     echo "원기둥의 부피 : " . $cyl->volume()."&pi;cm&sup3;";
+<<<<<<< Updated upstream
 ?>
+=======
+?>
+>>>>>>> Stashed changes
