@@ -1,3 +1,15 @@
+<?php
+
+//상수FAVORITE_FOOD에 값 Chicken을 대입한다.
+define("FAVORITE_FOOD","Chicken");
+echo "상수 FAVORITE_FOOD 값은".FAVORITE_FOOD."<br>";
+
+
+define("FAVORITE_FOOD","Ramen");
+//Constant FAVORITE_FOOD already defined 
+echo "상수 FAVORITE_FOOD 값은".FAVORITE_FOOD."<br>";
+?>
+
 <h2>틀린 php 변수명 고르기</h2>
 <?php
 echo "가. \$myVar &nbsp;&nbsp; 나. \$_area &nbsp;&nbsp; <font size=6pt color='red'>&#10003</font>다. \$2value &nbsp;&nbsp; 라. \$my_name ";
