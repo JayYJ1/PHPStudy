@@ -305,3 +305,20 @@ $seat = array(array(0,0,1,0,1,0,0,1,0,0),
    echo "□ : 예약가능, ■ : 예약 불가능";
 ?>
 <!--9번-->
+
+<?php
+    $memberList[0]=['name'=>'미선','id'=>'misun'];
+    $memberList[1]=['name'=>'봉원','id'=>'bong'];
+    $memberList[2]=['name'=>'은형','id'=>'silver'];
+    $memberList[3]=['name'=>'재준','id'=>'junjae'];
+    //foreach(배열 as 인덱스 대입변수 => 값 대입 변수)
+    foreach($memberList as $index=>$value){//$memberList는 배열 [0]는 인덱스['name'=>'미선','id'=>'misun'] 값
+        foreach($value as $index2=>$value2)//['name'=>'미선','id'=>'misun']에서 $index2에 name,id가 대입 ,value2에 미선, misun이 대입
+        if($index2 == 'name'){ //값 또한 배열이므로.. 
+            echo "{$value2}님의 아이디는 : " ;
+        }
+        if($index2 == 'id'){
+            echo "{$value2}입니다.";
+        }
+    }
+?>
