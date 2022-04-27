@@ -46,6 +46,6 @@ switch($dayOfWeek){
 		echo "<br>";
 		echo "금요일".date('Y-m-d',$friday);
 	}else{
-		"월~금 날짜를 입력하세요";
+		echo "월~금 날짜를 입력하세요";
 	}
 	?>
