@@ -1,6 +1,6 @@
 # PHPStudy
 
-언어 : PHP 8 <br>
+언어 : ![PHP](https://img.shields.io/badge/php-777BB4?style=flat&logo=&logoColor=white)
 환경 : Visual Studio Code <br>
 
 참고한 자료1 : PHP + MySQL입문 -황재호-, 인포앤북   
