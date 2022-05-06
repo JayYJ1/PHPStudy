@@ -20,12 +20,13 @@
             address char(80),
             primary key(num)  )";
     
+    //SQL success return True or False if SQl select, return obejct
     $result = mysqli_query($conn, $sql);
-
+    
     if($result)
         echo "friend table 생성 완료<br>";
     else
         echo "create table 실패". mysqli_error($conn)."<br>";
-    
+    //return object db connection
     mysqli_close($conn);
 ?>
