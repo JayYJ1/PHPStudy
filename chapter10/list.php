@@ -15,7 +15,7 @@
             </li>
         <?php
         $con = mysqli_connect("localhost","user","12345","sample");
-        $sql = "insert into freeboard order by num desc";
+        $sql = "select * from freeboard order by num desc";
         $result = mysqli_query($con, $sql);
         $total_record = mysqli_num_rows($result);
 
