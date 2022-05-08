@@ -4,7 +4,7 @@
         else
         $num = "";
     
-        $con = mysqli_connect("localhost","user","12345","sample");
+        $con = mysqli_connect("","","","");
         $sql = "select * from freeboard where num = $num";
         $result = mysqli_query($con,$sql);
 
