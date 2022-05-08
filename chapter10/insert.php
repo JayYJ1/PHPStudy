@@ -9,8 +9,7 @@
     $content = htmlspecialchars($content,ENT_QUOTES);
     $regist_day = date("Y-m-d(H:i)");
 
-    $con = mysqli_connect("localhost","user","12345","sample");
-    //$con = mysqli_connect("","","","");
+    $con = mysqli_connect("","","","");
     $sql = "insert into freeboard (name, pass, subject, content, regist_day)";
     $sql .= "values('$name','$pass','$subject','$content','$regist_day')";
 
