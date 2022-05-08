@@ -14,7 +14,7 @@
                 <span class="col4">등록일</span>
             </li>
         <?php
-        $con = mysqli_connect("localhost","user","12345","sample");
+        $con = mysqli_connect("","","","");
         $sql = "select * from freeboard order by num desc";
         $result = mysqli_query($con, $sql);
         $total_record = mysqli_num_rows($result);
