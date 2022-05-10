@@ -14,15 +14,15 @@
                 <span class="col4">등록일</span>
             </li>
         <?php
-        $con = mysqli_connect("","","","");
-        $sql = "select * from freeboard order by num desc";
-        $result = mysqli_query($con, $sql);
-        $total_record = mysqli_num_rows($result);
+        $con = mysqli_connect("","","",""); //db연결 객체
+        $sql = "select * from freeboard order by num desc"; //게시글의 번호를 내림차순으로 정렬
+        $result = mysqli_query($con, $sql); //연결 객체와 쿼리문을 실행
+        $total_record = mysqli_num_rows($result); //레코드 수를 반환한다
 
         $number = $total_record;
         for($i=0; $i<$total_record; $i++){
             mysqli_data_seek($result, $i);
-            $row = mysqli_fetch_assoc($result);
+            $row = mysqli_fetch_assoc($result); //레코드를 1개씩 리턴해준다
 
             $num        =   $row["num"];
             $name       =   $row["name"];
