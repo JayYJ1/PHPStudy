@@ -15,7 +15,7 @@
             if(!$id){
                 echo("아이디를 입력하세요.");
             }else{
-                $con = mysqli_connect("localhost","user","12345","sample"); //db연결
+                $con = mysqli_connect(); //db연결
                 $sql = "select * from members where id='$id'"; //질의문
                 $result = mysqli_query($con, $sql); //db연결 및 질의 결과
 
